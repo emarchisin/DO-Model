@@ -116,7 +116,9 @@ results=pd.DataFrame({
     'dDO': dDO[:nt],
     'GPP':GPP[:nt],
     'R':R_tot[:nt],
-    'Fatm':Fatm[:nt]
+    'Fatm':Fatm[:nt],
+    'DOC':docr[:nt],
+    'POC':poc[:nt]
     })
 
 print(DO/LV) #back in mg/L units
