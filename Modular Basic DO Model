@@ -39,7 +39,7 @@ daily_inputs=pd.DataFrame({
 Tw_abs=T_daily+273.15 #Absolute Water Temp (K)
 
 # Parameters
-theta_npp=1.08 #Ahrenius constant
+theta_npp=1.08 #Ahrenius constant for GPP
 theta_r=1.04 #Ahrenius constant for Respiration
 T20=20 #(degC)
 IP=(3e-5) #slope of productivity curve of NPP
