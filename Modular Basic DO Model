@@ -45,7 +45,7 @@ T20=20 #(degC)
 IP=(3e-5) #slope of productivity curve of NPP
 nDays=365 #(days)
 dt=1 #timestep (days)
-z=5 #thermocline depth (m) 
+z=5 #thermocline depth (m), might need to be adjusted 
 resp_docr=.003 #Resp DOC coeff
 resp_poc=.15 #Resp POC coeff
 OC= 38 # organic carbon (mgL^-1) from McAffee (2024)
@@ -108,18 +108,20 @@ for i in range (1,nt):
     dDO2[i]=GPP[i]-R_tot[i]+Fatm[i] #change in DO inlcuding Atmospheric exchange
     
  
-#results
+#results, divided by LV to get it into mgO2 L-1 d-1
 
 results=pd.DataFrame({
     'Date':Date_daily[:nt],
-    'DO': DO[:nt],
-    'dDO': dDO[:nt],
-    'GPP':GPP[:nt],
-    'R':R_tot[:nt],
-    'Fatm':Fatm[:nt],
-    'DOC':docr[:nt],
-    'POC':poc[:nt]
+    'DO': DO[:nt]/LV,
+    'dDO': dDO[:nt]/LV,
+    'dDO2':dDO2[:nt]/LV,
+    'GPP':GPP[:nt]/LV,
+    'R':R_tot[:nt]/LV,
+    'Fatm':Fatm[:nt]/LV,
+    'DOC':docr[:nt]/LV,
+    'POC':poc[:nt]/LV
     })
+
 
 print(DO/LV) #back in mg/L units
 
