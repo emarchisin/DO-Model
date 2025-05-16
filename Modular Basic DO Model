@@ -53,7 +53,6 @@ k=0.5 #constant (md^-1) can be dynamic in real world
 elev=.256 #elevation (m)
 LA=39*10**7 #(m^2) Lake Area of Mendota
 LV=LA*z #volume
-Sal=0 #Salinity (in freshwter lake=0)
 
 Qin=38/365*LA #estimation g/yr stream inflow
 Qout=Qin*.8 #estimation stream outflow
@@ -98,9 +97,8 @@ for i in range(1,nt):#calculating change in DO- BASIC METABOLISM, also Net Ecosy
 
 for i in range (1,nt):
     PsiSF=-139.34411+((1.575701*10**5)/Tw_abs)-((6.642308*10**7)/(Tw_abs**2))+((1.243800*10**10)/(Tw_abs**3))-((8.621949*10**11)/(Tw_abs**4))#DO sat of sealevel freshwater
-    PsiSal=(2.718281828459045)**(-Sal*(1.7674*10**-2+(10.754/Tw_abs)-(2140.7/(Tw_abs**2)))) #fractional reduction of Sat from Salinity
     PsiElev=1-(0.11988*elev)+(6.10834*(10**-3)*(elev**2))-1.60747*(10**-4)*(elev**3)#fractional reduction of freshwater sat sealevel to elevation
-    DOsat=PsiElev*PsiSal*(2.718281828459045)**(PsiSF)*LV #calculate DO saturation
+    DOsat=PsiElev*(2.718281828459045)**(PsiSF)*LV #calculate DO saturation
     Fatm[i]=k*((DOsat[i]-DO[i-1])/z) #atmospheric exchange
     DO[i]=DO[i-1]+GPP[i]-R_tot[i]+Fatm[i] #change in actual DO concentations
     dDO2[i]=GPP[i]-R_tot[i]+Fatm[i] #change in DO inlcuding Atmospheric exchange
