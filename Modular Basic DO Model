@@ -75,7 +75,7 @@ R_tot=np.empty(nt+1)
 
 #Initial Conditions
 DO[0]=13.1*LV 
-docr[0]=5*LV
+docr[0]=2*LV
 poc[0]=2.0*LV
 dDO[0]=0
 
